@@ -13,11 +13,13 @@
 
   {{ .Content }}
 
-  {{ $.Scratch.Set "index" 0 }}
-  {{ range (shuffle $posts) }}
-    {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
-    <a href="{{ .Permalink }}" class="surprise-me-link">{{ $.Scratch.Get "index" }}</a>
-  {{ end }}
+  <div style="display:none;">
+    {{ $.Scratch.Set "index" 0 }}
+    {{ range (shuffle $posts) }}
+      {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
+      <a href="{{ .Permalink }}" class="surprise-me-link">{{ $.Scratch.Get "index" }}</a>
+    {{ end }}
+  </div>
 
   <script>
     const sample = (array) => array[Math.floor(Math.random() * array.length)];
