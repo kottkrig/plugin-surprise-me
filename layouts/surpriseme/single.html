@@ -13,7 +13,22 @@
 
   {{ .Content }}
 
-  <div style="display:none;">
+  <style>
+    .surprise-me {
+    	animation: surpriseFadeIn 0.3s;
+    	animation-delay: 2s;
+    	animation-fill-mode: forwards;
+    
+    	opacity: 0;
+    }
+    
+    @keyframes surpriseFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+
+  <div class="surprise-me">
     {{ $.Scratch.Set "index" 0 }}
     {{ range (shuffle $posts) }}
       {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
